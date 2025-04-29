@@ -1,0 +1,330 @@
+/* mood-themes.css */
+:root {
+    /* 행복 테마 */
+    --happy-gradient: linear-gradient(45deg, #FF61D8, #00A3FF, #FF8A00, #FFD600);
+    --happy-accent: #FF61D8;
+    --happy-text: #FFFFFF;
+    --happy-shadow: 0 0 20px rgba(255, 97, 216, 0.3);
+
+    /* 평온 테마 */
+    --calm-gradient: linear-gradient(45deg, #A8DADC, #E8DAB2, #F4D9C6, #DDD6F3);
+    --calm-accent: #A8DADC;
+    --calm-text: #2F4858;
+    --calm-shadow: 0 0 20px rgba(168, 218, 220, 0.3);
+
+    /* 활기찬 테마 */
+    --energetic-gradient: linear-gradient(45deg, #FF0F7B, #F89B29, #FF0F7B);
+    --energetic-accent: #FF0F7B;
+    --energetic-text: #FFFFFF;
+    --energetic-shadow: 0 0 30px rgba(255, 15, 123, 0.4);
+
+    /* 슬픔 테마 */
+    --sad-gradient: linear-gradient(45deg, #2C3E50, #3498DB, #2C3E50);
+    --sad-accent: #3498DB;
+    --sad-text: #E0E0E0;
+    --sad-shadow: 0 0 20px rgba(44, 62, 80, 0.4);
+}
+
+/* 페이드 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* 활기찬 무드 - 사운드 웨이브 애니메이션 */
+@keyframes soundWave {
+    0%, 100% { height: 10px; }
+    50% { height: 40px; }
+}
+
+/* 평온 무드 - 물결 애니메이션 */
+@keyframes smoothWave {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 행복 무드 - 버블 애니메이션 */
+@keyframes bubbleRise {
+	 0% {
+	        transform: translateX(-50%) translateY(0);
+	    }
+	    50% {
+	        transform: translateX(0) translateY(20px);
+	    }
+	    100% {
+	        transform: translateX(50%) translateY(0);
+	    }
+}
+
+/* 슬픔 무드 - 빗방울 애니메이션 */
+@keyframes rainDrop {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* 무드별 배경 효과 */
+.mood-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+/* 활기찬 무드 배경 */
+.energetic-background {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+.sound-bar {
+    width: 4px;
+    background: rgba(255, 15, 123, 0.6);
+    margin: 0 2px;
+    border-radius: 2px;
+    animation: soundWave 0.5s ease infinite;
+    animation-delay: calc(var(--delay) * 0.1s);
+}
+
+/* 평온 무드 배경 */
+.calm-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(168, 218, 220, 0.1), rgba(221, 214, 243, 0.1));
+    overflow: hidden;
+}
+
+.calm-wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: none;
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    mix-blend-mode: soft-light;
+}
+
+.wave::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -150%;
+    left: -50%;
+    border-radius: 40%;
+    background: rgba(168, 218, 220, 0.3);
+    animation: smoothWave 12s infinite linear;
+}
+
+.wave:nth-child(2)::before {
+    animation: smoothWave 16s infinite linear;
+    opacity: 0.2;
+    animation-delay: -3s;
+}
+
+.wave:nth-child(3)::before {
+    animation: smoothWave 20s infinite linear;
+    opacity: 0.1;
+    animation-delay: -5s;
+}
+
+/* 행복 무드 배경 */
+.happy-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 97, 216, 0.1), rgba(0, 163, 255, 0.1));
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 97, 216, 0.4)
+    );
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubbleRise 4s ease-in infinite;
+}
+
+/* 슬픔 무드 배경 */
+.sad-background {
+    position: relative;
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: rgba(52, 152, 219, 0.3);
+    animation: rainDrop 2s linear infinite;
+}
+
+/* 무드 섹션 중앙 정렬 */
+.mood-selector {
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mood-selector h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+/* 무드 그리드 */
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* 무드 버튼 스타일 */
+.mood-btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 200px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mood-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mood-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.mood-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+/* 무드별 호버 효과 */
+.happy-mood:hover .mood-label {
+    background: var(--happy-accent);
+}
+
+.calm-mood:hover .mood-label {
+    background: var(--calm-accent);
+}
+
+.energetic-mood:hover .mood-label {
+    background: var(--energetic-accent);
+}
+
+.sad-mood:hover .mood-label {
+    background: var(--sad-accent);
+}
+
+/* 트랜지션 클래스 */
+.fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+}
+
+.fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.5s ease;
+}
+
+/* 글래스 모피즘 효과 */
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) {
+    .mood-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .mood-btn {
+        height: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mood-grid {
+        grid-template-columns:

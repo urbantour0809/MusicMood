@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicMood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="./css/mood-themes.css">
+</head>
+<body class="theme-default">
+    <div class="mood-background"></div>
+    
+    <header class="header glass-morphism">
+        <nav class="nav-container">
+            <h1 class="logo">MusicMood</h1>
+            <div class="nav-links">
+                <a href="#" class="active">홈</a>
+                <a href="chart.jsp">차트</a>
+                <a href="#">플레이리스트</a>
+                <a href="#">최신음악</a>
+            </div>
+            <div class="nav-controls">
+                <button id="searchBtn" class="icon-btn">🔍</button>
+                <button id="themeToggle" class="icon-btn">🌙</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-slider">
+                <div class="slide" style="background-image: url('./assets/images/1.png')"></div>
+                <div class="slide" style="background-image: url('./assets/images/2.png')"></div>
+                <div class="slide" style="background-image: url('./assets/images/3.png')"></div>
+                <div class="slide" style="background-image: url('./assets/images/4.png')"></div>
+            </div>
+		    <div class="hero-content">
+		    <h2>당신의 무드에 맞는<br>완벽한 음악을 찾아보세요</h2>
+		    <p>AI가 추천하는 맞춤형 플레이리스트</p>
+		    <a href="login.html" class="cta-button">
+		        <span>나만의 플레이리스트 만들기</span>
+		    </a>
+			</div>
+        </section>
+
+			<section class="mood-selector">
+			    <h3>오늘의 기분</h3>
+			    <div class="mood-grid">
+			        <button class="mood-btn happy-mood" data-mood="happy">
+			            <div class="mood-content">
+			                <img src="./assets/images/happy.png" alt="행복한 분위기" class="mood-image">
+			                <div class="mood-label">행복</div>
+			            </div>
+			        </button>
+			        <button class="mood-btn calm-mood" data-mood="calm">
+			            <div class="mood-content">
+			                <img src="./assets/images/calm.png" alt="평온한 분위기" class="mood-image">
+			                <div class="mood-label">평온</div>
+			            </div>
+			        </button>
+			        <button class="mood-btn energetic-mood" data-mood="energetic">
+			            <div class="mood-content">
+			                <img src="./assets/images/energetic.png" alt="활기찬 분위기" class="mood-image">
+			                <div class="mood-label">활기찬</div>
+			            </div>
+			        </button>
+			        <button class="mood-btn sad-mood" data-mood="sad">
+			            <div class="mood-content">
+			                <img src="./assets/images/sad.png" alt="감성적인 분위기" class="mood-image">
+			                <div class="mood-label">슬픔</div>
+			            </div>
+			        </button>
+			    </div>
+			</section>
+
+        <section class="playlist-container">
+            <!-- 플레이리스트가 여기에 동적으로 로드됨 -->
+        </section>
+    </main>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
